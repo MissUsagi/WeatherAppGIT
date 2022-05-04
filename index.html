@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="bootstrap.css">
+   <title>MyWeather App</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-md-6 text-center bg-info mt-0 p-4 rounded">
+            <h2 id="w-city" class="text-light"></h2>
+            <h6 id="w-location" class="text-light"></h6>
+            <hr>
+
+            <h3 class="text-light" id="w-desc"></h3>
+            <h3 id="w-tempString" class="text-light mt-3"></h3>
+            <img style="width: 75px" id="w-icon" alt="">
+
+            <p class="text-light text-center custom-font" id="currentData"></p>
+
+            <div class="mb-3 me-2 d-flex justify-content-center">
+               <div class="additional-data">
+                  <img src="/img/sunrise.png" style="width: 20px" alt=""><span id="sunrise"
+                     class="text-light ms-2"></span>
+               </div>
+               <div class="additional-data">
+                  <img src="/img/sunset.png" style="width: 20px" alt=""><span id="sunset"
+                     class="text-light ms-2"></span>
+               </div>
+            </div>
+
+            <ul id="w-details" class="list-group">
+               <li class="list-group-item bg-light li-data">Ciśnienie: <span id="w-pressure" class="w-data"></span></li>
+               <li class="list-group-item bg-light li-data">Wilgotność: <span id="w-humidity" class="w-data"></span>
+               </li>
+               <li class="list-group-item bg-light li-data">Temperatura odczuwalna: <span id="w-feels-like"
+                     class="w-data"></span></li>
+               <li class="list-group-item bg-light li-data">Prędkość Wiatru: <span id="w-wind" class="w-data"></span>
+               </li>
+            </ul>
+
+            <hr>
+            <button type="button" class="btn btn-outline-light mt-2" data-bs-toggle="modal" data-bs-target="#locModal">
+               Zmień Lokalizację
+            </button>
+            <!-- <hr> -->
+
+            <!-- CARDS -->
+
+            <div id="c-container" class="card-container card-deck d-flex mt-4">
+
+
+            </div>
+         </div>
+      </div>
+      <!-- END OF CARDS -->
+
+      <!--  -->
+   </div>
+
+   <!-- Modal from Bootstrap-->
+   <div class="modal fade" id="locModal" tabindex="-1" aria-labelledby="locModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="locModalLabel">Nowa Lokalizacja</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form id="w-form">
+                  <div class="form-group ">
+                     <div class="form-group-input">
+                        <label for="city">Miasto</label>
+                        <input type="search" id="city" class="form-control">
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label for="country">Kraj</label>
+                     <input type="text" id="country" value="PL" class="form-control">
+                  </div>
+               </form>
+            </div>
+            <div class="modal-footer">
+               <button type="button" id="w-change-btn" class="btn btn-primary btn-block">Szukaj</button>
+            </div>
+            <h6 class="modal-title px-3 mb-2 mt-3">Powiązane stacje Meteo:</h6>
+            <div id="city-list">
+            </div>
+
+         </div>
+      </div>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+   <script src="storage.js"></script>
+   <script src="weather.js"></script>
+   <script src="ui.js"></script>
+   <script src="app.js"></script>
+   <script src="listCreator.js"></script>
+   <script src="cardCreator.js"></script>
+</body>
+
+</html>
