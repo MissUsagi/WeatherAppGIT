@@ -1,5 +1,5 @@
 'use strict';
-const apiKey = '51c1f546910717e570769e6749672980';
+const apiKey = API_KEY;
 //.env (?)
 
 
