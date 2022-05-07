@@ -14,7 +14,7 @@ class UI {
       this.wschodSlonca = document.getElementById('sunrise');
       this.zachodSlonca = document.getElementById('sunset');
       this.icon2 = document.getElementById('w-icon2');
-      this.currentData = document.getElementById('currentData');
+      this.currentDate = document.getElementById('currentDate');
    }
 
    // CURRENT WEATHER
@@ -30,7 +30,7 @@ class UI {
       this.wind.textContent = weather.wind.speed + "m\u002Fs";
       this.wschodSlonca.textContent = 'Wschód: ' + getTime(weather.sys.sunrise);
       this.zachodSlonca.textContent = 'Zachód: ' + getTime(weather.sys.sunset);
-      this.currentData.textContent = getDate(weather.sys.sunrise);
+      this.currentDate.textContent = currentDate();
    }
 
 
@@ -42,20 +42,28 @@ class UI {
 
 function getTime(time) {
    const date = new Date(time * 1000);
-   const zerofill = value => (value < 10 && value > -1 ? '0' : "") + value;
-   const timeText = zerofill(date.getHours()) + ':' + zerofill(date.getMinutes());
+   const addZero = value => (value < 10 && value > -1 ? '0' : "") + value;
+   const timeText = addZero(date.getHours()) + ':' + addZero(date.getMinutes());
    return timeText;
 }
 
 function getDate(time) {
    const date = new Date(time * 1000);
-   const zerofill = value => (value < 10 && value > -1 ? '0' : "") + value;
-   const dateText = zerofill(date.getDate()) + '/' + zerofill((date.getMonth() + 1));
+   // const addZero = value => (value < 10 && value > -1 ? '0' : "") + value;
+   const dateText = addZero(date.getDate()) + '\u002f' + addZero((date.getMonth() + 1));
    const day = dayOfTheWeek(date.getDay()) + " " + dateText;
    return day;
 }
 
-
+function currentDate() {
+   const todaysDate = new Date();
+   const weekday = todaysDate.getDay();
+   const dayOfMonth = todaysDate.getDate();
+   const currentMonth = todaysDate.getMonth();
+   // const addZero = value => (value < 10 && value > -1 ? '0' : "") + value;
+   const dateString = dayOfTheWeek(weekday) + " " + addZero(dayOfMonth) + "\u002f" + addZero((currentMonth + 1));
+   return dateString;
+}
 
 function filterData(citiesArr) {
    const filteredData = citiesArr.filter((element, index, self) => self.findIndex((t) => {
@@ -65,23 +73,31 @@ function filterData(citiesArr) {
    createCityList(filteredData);
 }
 
-function dayOfTheWeek(day) {
-   switch (day) {
-      case 0:
-         return ("Niedziela")
-      case 1:
-         return ("Poniedziałek")
-      case 2:
-         return ("Wtorek")
-      case 3:
-         return ("Środa")
-      case 4:
-         return ("Czwartek")
-      case 5:
-         return ("Piątek")
-      case 6:
-         return ("Sobota")
-   }
+function addZero(value) {
+   const output = (value < 10 && value > -1 ? '0' : "") + value;
+   return output;
+}
+
+function dayOfTheWeek(dayIndex) {
+   const days = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
+   return days[dayIndex];
+
+   // switch (day) {
+   //    case 0:
+   //       return ("Niedziela")
+   //    case 1:
+   //       return ("Poniedziałek")
+   //    case 2:
+   //       return ("Wtorek")
+   //    case 3:
+   //       return ("Środa")
+   //    case 4:
+   //       return ("Czwartek")
+   //    case 5:
+   //       return ("Piątek")
+   //    case 6:
+   //       return ("Sobota")
+   // }
 }
 
 
