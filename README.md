@@ -6,4 +6,4 @@ App is still not perfect, but I am working on it. :)
 
 Demo version can be found here - > https://usagi-weatherapp.netlify.app
 
-![Weather APP](https://user-images.githubusercontent.com/99666752/227273100-ee442f9d-16fd-49a8-8ad3-9d5cd1e41892.png)
+![Weather APP (1)](https://user-images.githubusercontent.com/99666752/227277212-627bd794-30b2-46f5-8002-5c12683d2866.png)
